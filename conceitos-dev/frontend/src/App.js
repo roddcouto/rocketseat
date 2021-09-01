@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './css/App.css'
+import './App.css'
 import backgroundImage from './assets/notebookwebp.jpeg'
 
 import Header from './components/Header';
