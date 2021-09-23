@@ -15,16 +15,19 @@ function App() {
 
   async function handleAddRepository() {
     const response = await api.post('repositories', {
-      title: 'Umbriel',
-      url: 'https://github.com/rocketseat/umbriel',
-      techs: ['Node.js', 'ReactJS']
+      title: 'Code - roddcouto',
+      url: 'https://github.com/roddcouto/Code',
+      techs: ['Node.js', 'ReactJS', 'React-Native']
     });
 
     setRepositories([ ...repositories, response.data ]);
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    await api.delete(`repositories/${id}`);
+
+    setRepositories(repositories.filter(repository => repository.id !== id));
+
   }
 
   return (
@@ -34,7 +37,7 @@ function App() {
           <li key={respository.id}>
           {respository.title}
 
-          <button onClick={() => handleRemoveRepository(1)}>
+          <button onClick={() => handleRemoveRepository(respository.id)}>
             Remover
           </button>
         </li>
